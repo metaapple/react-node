@@ -14,7 +14,7 @@ https://github.com/metaapple/react-node
 
 ## 프로젝트 개요
 
-- **프론트엔드**: React (Create React App 또는 Vite 기반) SPA
+- **프론트엔드**: React (Vite 기반) SPA
 - **백엔드**: Node.js + Express RESTful API 서버
 - **목적**: 풀스택 개발 학습, 프로토타이핑, 배포 연습용 기본 구조 제공
 - **주요 특징**:
@@ -27,16 +27,18 @@ https://github.com/metaapple/react-node
 ## 기술 스택
 
 ### Frontend (`frontend/`)
-- React 18+
-- React Router
+- React 19+
+- Vite 7+
+- Zustand (상태 관리)
 - Axios
-- ESLint + Prettier
+- ESLint
 
 ### Backend (`backend/`)
-- Node.js (v18 이상 추천)
+- Node.js (v20 이상 추천)
 - Express.js
-- CORS, dotenv
-- nodemon (개발 시)
+- MySQL2
+- Express Session
+- CORS
 
 ### 공통 / 배포
 - JavaScript
@@ -48,34 +50,45 @@ https://github.com/metaapple/react-node
 
 ```plaintext
 react-node/
-├── frontend/                 # React 프론트엔드
+├── frontend/                 # React 프론트엔드 (Vite)
 │   ├── public/
-│   │   ├── index.html
-│   │   └── ...
+│   │   ├── assets/
+│   │   │   ├── css/
+│   │   │   ├── img/
+│   │   │   └── js/
+│   │   └── vite.svg
 │   ├── src/
 │   │   ├── components/      # 재사용 컴포넌트
-│   │   ├── pages/           # 페이지 컴포넌트
-│   │   ├── services/        # API 호출 로직
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── ...
+│   │   │   ├── Board.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── Header.jsx
+│   │   ├── store/           # Zustand 상태 관리
+│   │   │   └── authStore.js
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── Dockerfile
 │   ├── package.json
-│   └── .env                     # REACT_APP_ 접두사 환경 변수
+│   ├── vite.config.js
+│   └── .env                 # VITE_ 접두사 환경 변수
 │
 ├── backend/                  # Node.js 백엔드
-│   ├── src/
-│   │   ├── routes/          # 라우트 정의
-│   │   ├── controllers/     # 비즈니스 로직
-│   │   ├── models/          # 데이터 모델 (예: Mongoose)
-│   │   ├── middleware/      # 커스텀 미들웨어
-│   │   ├── server.js        # Express 엔트리 포인트
-│   │   └── ...
+│   ├── db/                   # 데이터베이스 관련
+│   │   ├── db.js
+│   │   ├── board_db.js
+│   │   ├── user_db.js
+│   │   └── init.sql
+│   ├── routes/               # 라우트 정의
+│   │   ├── board_router.js
+│   │   └── user_router.js
+│   ├── Dockerfile
+│   ├── index.js              # Express 엔트리 포인트
 │   ├── package.json
-│   └── .env                     # 서버 환경 변수 (PORT, DB_URL 등)
+│   └── .env                  # 서버 환경 변수 (PORT, DB_URL 등)
 │
-├── Dockerfile                # 멀티스테이지 빌드 (React 빌드 → Nginx + Node)
 ├── nginx.conf                # Nginx 설정 (React 정적 파일 + API 프록시)
-├── docker-compose.yml        # Docker Compose 정의 (app + mongo)
+├── docker-compose.yml        # Docker Compose 정의
 └── README.md                 # 이 파일
 ```
 
@@ -100,8 +113,8 @@ npm run dev    # 또는 npm start
 ```bash
 cd ../frontend
 npm install
-npm start
-# → http://localhost:3000
+npm run dev    # Vite 개발 서버
+# → http://localhost:5173 (Vite 기본 포트)
 ```
 
 ### 2. Docker Compose로 한 번에 실행 (추천)
@@ -114,9 +127,9 @@ docker-compose up --build
 docker-compose up -d --build
 ```
 
-- **프론트엔드**: http://localhost (포트 80 → Nginx)
-- **백엔드 API**: http://localhost/api/... (Nginx가 /api/ 를 백엔드로 프록시)
-- **MongoDB** (옵션): mongodb://localhost:27017/myapp
+- **프론트엔드**: http://localhost:8080 (포트 8080 → Nginx)
+- **백엔드 API**: http://localhost:8080/api/... (Nginx가 /api/ 를 백엔드로 프록시)
+- **백엔드 직접 접근** (테스트용): http://localhost:5000
 
 로그 확인 및 종료
 ```bash
@@ -130,7 +143,7 @@ time="2025-12-31T14:45:01+09:00" level=warning msg="C:\\Users\\Administrator\\De
 [+] Running 3/3
  ✔ Container react-node-frontend-1  Removed                                                                                                                          0.1s 
  ✔ Container react-node-backend-1   Removed                                                                                                                          0.1s 
- ✔ Network react-node_default       Removed                                                                                                                          0.4s 
+ ✔ Network react-node_default       Removed                                                                                                                          0.4s
 
 C:\Users\Administrator\Desktop\react-node>docker-compose build --no-cache         
 time="2025-12-31T14:45:14+09:00" level=warning msg="C:\\Users\\Administrator\\Desktop\\react-node\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
@@ -148,7 +161,7 @@ time="2025-12-31T14:45:14+09:00" level=warning msg="C:\\Users\\Administrator\\De
  => [frontend internal] load .dockerignore                                                                                                                           0.0s 
  => => transferring context: 2B                                                                                                                                      0.0s 
  => [backend internal] load .dockerignore                                                                                                                            0.0s 
- => => transferring context: 90B                                                                                                                                     0.0s 
+ => => transferring context: 90B                                                                                                                                    0.0s 
  => [backend 1/5] FROM docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448                                      0.2s 
  => => resolve docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448                                              0.2s 
  => [backend internal] load build context                                                                                                                            0.1s 
@@ -180,7 +193,7 @@ time="2025-12-31T14:45:14+09:00" level=warning msg="C:\\Users\\Administrator\\De
  => => exporting layers                                                                                                                                              0.1s 
  => => exporting manifest sha256:aab1e16cf1b23577174f08e38b8cd710b71e2333fa2ce978e52abbffd759f853                                                                    0.0s 
  => => exporting config sha256:ee6f3a2491705f997618850ada18cc4d8fe1b19bad0d854260ce1e15f386d0db                                                                      0.0s 
- => => exporting attestation manifest sha256:5eb235d73ada0b5e87aeb9a198dbb197837c4049012bf2d188c598b0c26395ef                                                        0.0s 
+ => => exporting attestation manifest sha256:5eb235d73ada0b5e87aeb9a198dbb197837c4049012bf2d188c598b0c26395ef                                                        0.1s 
  => => exporting manifest list sha256:8d9da0257518ec65a79154dfce763769efb27088ba4f0e96057b83a591838be7                                                               0.0s 
  => => naming to docker.io/library/react-node-frontend:latest                                                                                                        0.0s 
  => => unpacking to docker.io/library/react-node-frontend:latest                                                                                                     0.1s 
@@ -236,13 +249,16 @@ v View in Docker Desktop   o View Config   w Enable Watch
 ```
 PORT=5000
 NODE_ENV=production
-DB_URL=mongodb://mongo:27017/myapp
-JWT_SECRET=your_strong_secret
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=myapp
+SESSION_SECRET=your_strong_secret
 ```
 
 ### frontend/.env 예시 (로컬 개발 시)
 ```
-REACT_APP_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:5000/api
 ```
 
 Docker 실행 시에는 `docker-compose.yml`의 `environment` 또는 `.env` 파일 마운트로 설정 가능
@@ -252,21 +268,23 @@ Docker 실행 시에는 `docker-compose.yml`의 `environment` 또는 `.env` 파�
 | Method | Endpoint            | 설명           |
 |--------|---------------------|----------------|
 | GET    | /api/health         | 서버 상태 확인 |
-| GET    | /api/users          | 사용자 목록    |
-| POST   | /api/auth/login     | 로그인         |
-| POST   | /api/auth/register  | 회원가입       |
+| GET    | /api/board          | 게시판 목록    |
+| POST   | /api/user/login     | 로그인         |
+| POST   | /api/user/register  | 회원가입       |
+
+실제 API 엔드포인트는 `backend/routes/` 폴더의 라우터 파일을 참고하세요.
 
 ## 배포 가이드
 
 ### 로컬/서버 직접 배포
-- 프론트엔드: `npm run build` → build 폴더를 Nginx나 정적 호스팅에 배포
-- 백엔드: PM2 등으로 프로세스 관리 (`pm2 start src/server.js`)
+- 프론트엔드: `npm run build` → `dist` 폴더를 Nginx나 정적 호스팅에 배포
+- 백엔드: PM2 등으로 프로세스 관리 (`pm2 start index.js`)
 
 ### Docker 기반 배포 (Render, Railway, Fly.io, AWS 등)
 ```bash
 docker-compose up --build -d
 ```
-또는 멀티스테이지 Dockerfile만 사용해 단일 컨테이너로 배포 가능
+또는 각각의 Dockerfile을 사용해 개별 컨테이너로 배포 가능
 
 ## 기여하기 (Contributing)
 
