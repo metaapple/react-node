@@ -1,6 +1,8 @@
 - 윈도우에서 테스트시 다음과 같은 port충돌이 있을 수 있음. <br>
 <img width="733" height="435" alt="2025-12-31 12 26 31" src="https://github.com/user-attachments/assets/f3bbc607-e999-421d-a416-8e978e5cdf57" />
 
+<img width="1900" height="980" alt="image" src="https://github.com/user-attachments/assets/4064ff29-4021-45c2-b477-6a7d927e4aff" />
+
 
 ```markdown
 # React + Node.js Fullstack Project
