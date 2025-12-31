@@ -1,5 +1,4 @@
-아래는 이전에 만든 README.md를 최신 상태로 업데이트한 버전입니다.  
-Docker와 Docker Compose 지원 내용을 상세히 추가하고, 프로젝트 구조에도 새로 추가된 파일들(Dockerfile, docker-compose.yml, nginx.conf)을 반영했습니다.
+
 
 ```markdown
 # React + Node.js Fullstack Project
