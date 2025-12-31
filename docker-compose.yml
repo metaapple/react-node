@@ -1,35 +1,31 @@
 version: '3.9'
 
 services:
-  app:
+  frontend:
     build:
-      context: .
+      context: .         # ./frontend → . (프로젝트 루트)로 변경
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"
+
+  backend:
+    build:
+      context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8080:80"        # 프론트엔드 + API 모두 http://localhost로 접근
+      - "5000:5000"      # 직접 접근 테스트용 (필요 시 주석 처리 가능)
+    restart: unless-stopped
     environment:
       - NODE_ENV=production
-      # 필요시 DB 설정 추가
-      # - MYSQL_HOST=db
-      # - MYSQL_USER=root
-      # - MYSQL_PASSWORD=secret
-      # - MYSQL_DATABASE=board
-    # 개발 시 핫리로드 원하면 아래 volumes 주석 해제
-    # volumes:
-    #   - ./backend:/app/backend
-    #   - ./frontend:/app/frontend
+      # DB 등 환경변수 필요 시 추가
 
-  # MySQL 사용 시 주석 해제
-  # db:
-  #   image: mysql:8.0
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: secret
-  #     MYSQL_DATABASE: board
+  # (옵션) Nginx 별도 컨테이너로 분리하고 싶다면 아래처럼
+  # nginx:
+  #   image: nginx:alpine
   #   ports:
-  #     - "3306:3306"
+  #     - "80:80"
   #   volumes:
-  #     - mysql-data:/var/lib/mysql
-
-# volumes:
-#   mysql-data:
+  #     - ./frontend/build:/usr/share/nginx/html:ro
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - backend
