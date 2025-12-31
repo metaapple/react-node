@@ -1,4 +1,3 @@
-```markdown
 # React + Node.js Fullstack Project
 
 이 프로젝트는 **React**를 사용한 프론트엔드와 **Node.js** (Express)를 사용한 백엔드로 구성된 기본적인 풀스택 웹 애플리케이션 템플릿입니다.  
@@ -24,7 +23,6 @@ https://github.com/metaapple/react-node
 - React Router (클라이언트 라우팅)
 - Axios (API 호출)
 - ESLint + Prettier (코드 포맷팅 및 린팅)
-- Create React App 또는 Vite (프로젝트에 따라 다름)
 
 ### Backend (`backend/`)
 - Node.js (v18 이상 추천)
@@ -34,12 +32,12 @@ https://github.com/metaapple/react-node
 - nodemon (개발 시 자동 재시작)
 
 ### 공통
-- JavaScript (또는 TypeScript 옵션 가능)
+- JavaScript
 - Git 기반 버전 관리
 
 ## 프로젝트 구조
 
-```
+```plaintext
 react-node/
 ├── frontend/                 # React 프론트엔드
 │   ├── public/
