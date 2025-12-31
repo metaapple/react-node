@@ -6,7 +6,7 @@
 <img width="733" height="435" alt="2025-12-31 12 26 31" src="https://github.com/user-attachments/assets/f3bbc607-e999-421d-a416-8e978e5cdf57" />
 <hr>
 <br>
-✔️✔️✔️✔️✔️✔️ 아래의 모든 주소가 모두 테스트 통과해야함. ✔️✔️✔️✔️✔️✔️
+✔️✔️✔️✔️✔️✔️ <b>아래의 모든 주소가 모두 테스트 통과해야함.</b> ✔️✔️✔️✔️✔️✔️
 <br>
 <hr>
 <img width="997" height="249" alt="image" src="https://github.com/user-attachments/assets/c87256ed-2c68-4f14-990d-71c1809e1fdf" />
