@@ -26,7 +26,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # nginx.conf 복사 (frontend 폴더 안에 있는 파일)
-COPY frontend/nginx.conf /etc/nginx/conf.d/default.conf 
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf 
 # --> docker compose시
 # dockerfile시
 # COPY nginx.conf /etc/nginx/conf.d/default.conf 
