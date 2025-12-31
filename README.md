@@ -122,6 +122,112 @@ docker-compose logs -f
 docker-compose down
 ```
 
+```
+C:\Users\Administrator\Desktop\react-node>docker-compose down       
+time="2025-12-31T14:45:01+09:00" level=warning msg="C:\\Users\\Administrator\\Desktop\\react-node\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] Running 3/3
+ ✔ Container react-node-frontend-1  Removed                                                                                                                          0.1s 
+ ✔ Container react-node-backend-1   Removed                                                                                                                          0.1s 
+ ✔ Network react-node_default       Removed                                                                                                                          0.4s 
+
+C:\Users\Administrator\Desktop\react-node>docker-compose build --no-cache         
+time="2025-12-31T14:45:14+09:00" level=warning msg="C:\\Users\\Administrator\\Desktop\\react-node\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] Building 16.9s (27/27) FINISHED
+ => [internal] load local bake definitions                                                                                                                           0.1s 
+ => => reading from stdin 1.10kB                                                                                                                                     0.1s 
+ => [backend internal] load build definition from Dockerfile                                                                                                         0.0s 
+ => => transferring dockerfile: 522B                                                                                                                                 0.0s 
+ => [frontend internal] load build definition from Dockerfile                                                                                                        0.0s 
+ => => transferring dockerfile: 1.04kB                                                                                                                               0.0s 
+ => [frontend internal] load metadata for docker.io/library/nginx:alpine                                                                                             1.8s 
+ => [backend internal] load metadata for docker.io/library/node:20-alpine                                                                                            1.8s 
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                          0.0s 
+ => [auth] library/nginx:pull token for registry-1.docker.io                                                                                                         0.0s 
+ => [frontend internal] load .dockerignore                                                                                                                           0.0s 
+ => => transferring context: 2B                                                                                                                                      0.0s 
+ => [backend internal] load .dockerignore                                                                                                                            0.0s 
+ => => transferring context: 90B                                                                                                                                     0.0s 
+ => [backend 1/5] FROM docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448                                      0.2s 
+ => => resolve docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448                                              0.2s 
+ => [backend internal] load build context                                                                                                                            0.1s 
+ => => transferring context: 741B                                                                                                                                    0.0s 
+ => [frontend internal] load build context                                                                                                                           0.4s 
+ => => transferring context: 394.38kB                                                                                                                                0.3s 
+ => CACHED [frontend stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:8491795299c8e739b7fcc6285d531d9812ce2666e07bd3dd8db00020ad132295                        0.2s 
+ => => resolve docker.io/library/nginx:alpine@sha256:8491795299c8e739b7fcc6285d531d9812ce2666e07bd3dd8db00020ad132295                                                0.2s 
+ => CACHED [backend 2/5] WORKDIR /app                                                                                                                                0.0s 
+ => [backend 3/5] COPY package*.json ./                                                                                                                              0.1s 
+ => [backend 4/5] RUN npm install --production                                                                                                                       4.2s 
+ => [frontend build 3/6] COPY frontend/package*.json ./                                                                                                              0.1s 
+ => [frontend build 4/6] RUN npm install                                                                                                                             7.5s 
+ => [backend 5/5] COPY . .                                                                                                                                           0.2s 
+ => [backend] exporting to image                                                                                                                                     2.2s 
+ => => exporting layers                                                                                                                                              1.1s 
+ => => exporting manifest sha256:627b5d2980c3a0dff81767ebf402cb3708a6dcfe2883089045ca6f369be02846                                                                    0.0s 
+ => => exporting config sha256:f9f8f52b97c03c9c5a2ac8b02d6ce9151c2fb98bb64bdd080cba9a58a9b187a0                                                                      0.0s 
+ => => exporting attestation manifest sha256:f55c5f346f06745ae2e6f8a1b94d5f817e57c241a297db684774ad40ea5c5900                                                        0.1s 
+ => => exporting manifest list sha256:cdcce61a0824f33e6afbedd0b5f4817689c6405611b87bb8ff988df2f41bd0b6                                                               0.0s 
+ => => naming to docker.io/library/react-node-backend:latest                                                                                                         0.0s 
+ => => unpacking to docker.io/library/react-node-backend:latest                                                                                                      0.7s 
+ => [backend] resolving provenance for metadata file                                                                                                                 0.0s 
+ => [frontend build 5/6] COPY ./frontend .                                                                                                                           1.8s 
+ => [frontend build 6/6] RUN npm run build                                                                                                                           3.1s 
+ => [frontend stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html                                                                                         0.1s 
+ => [frontend stage-1 3/3] COPY frontend/nginx.conf /etc/nginx/conf.d/default.conf                                                                                   0.0s 
+ => [frontend] exporting to image                                                                                                                                    0.4s 
+ => => exporting layers                                                                                                                                              0.1s 
+ => => exporting manifest sha256:aab1e16cf1b23577174f08e38b8cd710b71e2333fa2ce978e52abbffd759f853                                                                    0.0s 
+ => => exporting config sha256:ee6f3a2491705f997618850ada18cc4d8fe1b19bad0d854260ce1e15f386d0db                                                                      0.0s 
+ => => exporting attestation manifest sha256:5eb235d73ada0b5e87aeb9a198dbb197837c4049012bf2d188c598b0c26395ef                                                        0.0s 
+ => => exporting manifest list sha256:8d9da0257518ec65a79154dfce763769efb27088ba4f0e96057b83a591838be7                                                               0.0s 
+ => => naming to docker.io/library/react-node-frontend:latest                                                                                                        0.0s 
+ => => unpacking to docker.io/library/react-node-frontend:latest                                                                                                     0.1s 
+ => [frontend] resolving provenance for metadata file                                                                                                                0.0s 
+[+] Building 2/2
+ ✔ react-node-backend   Built                                                                                                                                        0.0s 
+ ✔ react-node-frontend  Built                                                                                                                                        0.0s 
+
+C:\Users\Administrator\Desktop\react-node>docker-compose up              
+time="2025-12-31T14:46:02+09:00" level=warning msg="C:\\Users\\Administrator\\Desktop\\react-node\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] Running 3/3
+ ✔ Network react-node_default       Created                                                                                                                          0.1s 
+ ✔ Container react-node-frontend-1  Created                                                                                                                          0.1s 
+ ✔ Container react-node-backend-1   Created                                                                                                                          0.2s 
+Attaching to backend-1, frontend-1
+frontend-1  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-1  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-1  | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+frontend-1  | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+frontend-1  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+frontend-1  | /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: using the "epoll" event method
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: nginx/1.29.4
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0)
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: start worker processes
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: start worker process 29
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: start worker process 30
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: start worker process 31
+frontend-1  | 2025/12/31 05:46:04 [notice] 1#1: start worker process 32
+backend-1   |
+backend-1   | > board-server@1.0.0 start
+backend-1   | > node index.js
+backend-1   |
+backend-1   | Warning: connect.session() MemoryStore is not
+backend-1   | designed for a production environment, as it will leak
+backend-1   | memory, and will not scale past a single process.
+backend-1   | 서버 실행 중: http://localhost:5000
+
+
+v View in Docker Desktop   o View Config   w Enable Watch
+
+
+```
+
 ## 환경 변수 설정
 
 ### backend/.env 예시
