@@ -1,5 +1,5 @@
 - 윈도우에서 테스트시 다음과 같은 port충돌이 있을 수 있음. <br>
-- 윈도우에서 테스트시는 8080으로, aws ec2리눅스 배포시에는 80으로 할 것
+- <font color="red">윈도우에서 테스트시는 8080으로, aws ec2리눅스 배포시에는 80으로 할 것</font>
 
 <hr>
   
@@ -14,15 +14,15 @@
 <img width="800" height="967" alt="image" src="https://github.com/user-attachments/assets/3428222b-685f-47f0-ab1e-5e8e4fc92bce" />
 <hr>
 <img width="800" height="807" alt="image" src="https://github.com/user-attachments/assets/48e18633-5b14-41e4-a4e6-0f49fb59eca0" />
+<hr>
 <img width="800" height="980" alt="image" src="https://github.com/user-attachments/assets/4064ff29-4021-45c2-b477-6a7d927e4aff" />
-
 <hr>
 <img width="800" height="778" alt="2025-12-31 15 41 08" src="https://github.com/user-attachments/assets/fe29bcf7-a3c7-446c-8876-15856ea7aaf4" />
 <hr>
 <img width="800" height="530" alt="2025-12-31 15 40 20" src="https://github.com/user-attachments/assets/faf4d9bb-451a-4816-b7b5-36586b4acba2" />
 
 
-
+<hr>
 ```markdown
 # React + Node.js Fullstack Project
 
