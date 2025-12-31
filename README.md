@@ -9,15 +9,18 @@
 ✔️✔️✔️✔️✔️✔️ <b>아래의 모든 주소가 모두 테스트 통과해야함.</b> ✔️✔️✔️✔️✔️✔️
 <br>
 <hr>
-<img width="997" height="249" alt="image" src="https://github.com/user-attachments/assets/c87256ed-2c68-4f14-990d-71c1809e1fdf" />
-<img width="747" height="967" alt="image" src="https://github.com/user-attachments/assets/3428222b-685f-47f0-ab1e-5e8e4fc92bce" />
-<img width="733" height="807" alt="image" src="https://github.com/user-attachments/assets/48e18633-5b14-41e4-a4e6-0f49fb59eca0" />
-
-<img width="1900" height="980" alt="image" src="https://github.com/user-attachments/assets/4064ff29-4021-45c2-b477-6a7d927e4aff" />
+<img width="800" height="249" alt="image" src="https://github.com/user-attachments/assets/c87256ed-2c68-4f14-990d-71c1809e1fdf" />
+<hr>
+<img width="800" height="967" alt="image" src="https://github.com/user-attachments/assets/3428222b-685f-47f0-ab1e-5e8e4fc92bce" />
+<hr>
+<img width="800" height="807" alt="image" src="https://github.com/user-attachments/assets/48e18633-5b14-41e4-a4e6-0f49fb59eca0" />
+<img width="800" height="980" alt="image" src="https://github.com/user-attachments/assets/4064ff29-4021-45c2-b477-6a7d927e4aff" />
 
 <hr>
-<img width="815" height="778" alt="2025-12-31 15 41 08" src="https://github.com/user-attachments/assets/fe29bcf7-a3c7-446c-8876-15856ea7aaf4" />
-<img width="1898" height="530" alt="2025-12-31 15 40 20" src="https://github.com/user-attachments/assets/faf4d9bb-451a-4816-b7b5-36586b4acba2" />
+<img width="800" height="778" alt="2025-12-31 15 41 08" src="https://github.com/user-attachments/assets/fe29bcf7-a3c7-446c-8876-15856ea7aaf4" />
+<hr>
+<img width="800" height="530" alt="2025-12-31 15 40 20" src="https://github.com/user-attachments/assets/faf4d9bb-451a-4816-b7b5-36586b4acba2" />
+
 
 
 ```markdown
