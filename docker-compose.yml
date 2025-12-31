@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"      # 프론트엔드 (Nginx)
+      - "5000:5000"  # 백엔드 (개발 시 직접 접근 가능)
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      # 필요 시 추가: - DB_URL=mongodb://mongo:27017/myapp
+      # - JWT_SECRET=your_secret
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend/.env:/app/backend/.env:ro  # .env 파일 마운트 (옵션)
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: myapp
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
