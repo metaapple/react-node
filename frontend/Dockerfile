@@ -25,7 +25,7 @@ FROM nginx:alpine
 # build 스테이지에서 만들어진 dist 폴더를 Nginx 위치로 복사
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# nginx.conf 복사 (frontend 폴더 안에 있는 파일)
+# nginx.conf 복사
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf 
 # --> docker compose시
 # dockerfile시
