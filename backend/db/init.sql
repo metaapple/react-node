@@ -12,14 +12,13 @@ CREATE TABLE posts (
 );
 
 -- 1. users 테이블 생성 (이미 존재하면 생략 가능)
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    content TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    username VARCHAR(50) NOT NULL UNIQUE,    -- 사용자 이름 (중복 방지)
+    password VARCHAR(255) NOT NULL,           -- 비밀번호 (보안을 위해 길게 설정)
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- 2. 사용자 'apple' 삽입 (비밀번호: 1234)
 -- 실제 서비스에서는 반드시 비밀번호를 해시 처리해야 합니다! (예: bcrypt)
