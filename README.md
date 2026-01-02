@@ -25,7 +25,7 @@
 
 
 <hr>
-```markdown
+
 # React + Node.js Fullstack Project
 
 이 프로젝트는 **React**를 사용한 프론트엔드와 **Node.js** (Express)를 사용한 백엔드로 구성된 풀스택 웹 애플리케이션 템플릿입니다.  
